@@ -1,0 +1,1 @@
+from django.urls import path,re_pathfrom app import viewsurlpatterns = [    re_path('^home/$',views.home),    re_path('^$',views.hi),]

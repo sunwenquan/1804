@@ -1,0 +1,1 @@
+s = ['ssdfasdf''asdfasfaf']print(s)

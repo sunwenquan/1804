@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+
+<body>
+    <button class="btn">点我呀</button>
+    <script>
+        $('.btn').click(function() {
+            $.ajax({
+                url: 'http://localhost:8000/api/',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    user: "gavin"
+                }),
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
