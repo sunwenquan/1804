@@ -99,13 +99,21 @@
 </head>
 <body>
 <form action="/msg/" method="post" class="smart-yellow">
+
+{#    <h1>{{ msg }}</h1>#}
+    <ul>
+    {% for foo in msg %}
+       <li>{{ foo }}</li>
+    {% endfor %}
+    </ul>
+
     <h1>留言信息
         <span>请留下你的信息.</span>
     </h1>
     <label>
         <span>姓名 :</span>
         <input id="name" type="text" name="name" class="error" placeholder="请输入您的姓名"/>
-        <div class="error-msg"></div>
+        <div class="error-msg">{{ name_error }}</div>
     </label>
 
     <label>
