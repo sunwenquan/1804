@@ -1,0 +1,1 @@
+from django.urls import pathfrom blog import viewsurlpatterns = [    # blog的主页    path('home/',views.home),]
