@@ -1,6 +1,29 @@
 # 1804
 
+## 1.4.0 2019年06月14日
 
+- re_path和path的区别
+- (?P<article_id>[0-9])/$
+- {% url %}的使用
+- Article.object.all()
+- Article.object.filter()
+- Article.object.get(id=article_id)
+- render的使用
+
+## 1.3 2019年06月12日
+
+- Python环境安装
+- 如何创建项目
+- 熟悉项目中目录
+- 熟悉settings.py的配置
+- 路由、视图、模板是如何协作的
+
+## 1.2.0 2019年06月11日
+
+- 什么是白盒测试
+- 什么是单元测试
+- unittest的基本使用
+- 如何在Django中写单元测试
 
 ## 1.1.0 2019年06月06日
 
