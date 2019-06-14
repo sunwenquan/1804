@@ -1,0 +1,1 @@
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>文章分类</title></head><body>{% for category in categories %}    {#使用 url 反向解析#}    <a href="{% url 'category' category_id=category.id %}">{{ category.name }}</a>    <a href="/blog/categories/{{ category.id }}">{{ category.name }}</a>{% endfor %}</body></html>
