@@ -1,0 +1,1 @@
+## 安装mysqlclientpip install mysqlclient## 配置

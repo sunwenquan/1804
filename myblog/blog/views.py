@@ -7,6 +7,7 @@ def home(request):
     """显示所有文章分类，和所有文章标题"""
     categories = Category.objects.all()
     posts = Article.objects.all()
+    # posts = Article.objects.raw("select * from blog_article")
     c = {
         'categories': categories,
         'posts': posts

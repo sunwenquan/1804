@@ -1,0 +1,1 @@
+with open('testmysql.py') as f:    print(next(f))  # cur    print(next(f))

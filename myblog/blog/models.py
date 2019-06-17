@@ -23,7 +23,7 @@ class Article(models.Model):
     创建时间：created_time
     """
     title = models.CharField(max_length=100)
-    content = models.CharField(max_length=500)
+    content = models.TextField(max_length=500)
     created_time = models.DateTimeField(auto_now_add=True)
     # 分类被删除的时候，分类下的文章要删除吗？category存储的是分类ID
     category = models.ForeignKey(to='Category',on_delete=models.SET_DEFAULT,default='1')
