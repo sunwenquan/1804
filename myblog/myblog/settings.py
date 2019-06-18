@@ -81,11 +81,11 @@ DATABASES = {
         'NAME': '1804C',
         'USER': 'python',
         'PASSWORD': '123456',
-        'HOST': '172.16.44.89',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
