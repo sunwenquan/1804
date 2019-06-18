@@ -109,75 +109,102 @@
             <div class="col-md-8 col-xs-12 " id="main" role="main">
 
                 {% for post in posts %}
-                     <article class="post-wrapper" itemscope
-                         itemtype="http://schema.org/BlogPosting">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3><a class="title-link" itemprop="url"
-                                   title="{{ post.title }}"
-                                   href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/">{{ post.title }}</a></h3>
-                        </div>
-                        <div class="col-md-4 ">
-                            <a href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/">
-                                <img src="http://theme.typecho.ptbird.cn/bootstrap-blog/usr/uploads/2018/07/1982966592.jpg"
-                                     alt="文章缩略图"
-                                     class="post-thumb-image img-thumbnail">
-                            </a>
-                        </div>
-                        <div class="col-md-8">
+                    <article class="post-wrapper" itemscope
+                             itemtype="http://schema.org/BlogPosting">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3><a class="title-link" itemprop="url"
+                                       title="{{ post.title }}"
+                                       href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/">{{ post.title }}</a>
+                                </h3>
+                            </div>
+                            <div class="col-md-4 ">
+                                <a href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/">
+                                    <img src="http://theme.typecho.ptbird.cn/bootstrap-blog/usr/uploads/2018/07/1982966592.jpg"
+                                         alt="文章缩略图"
+                                         class="post-thumb-image img-thumbnail">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
 
-                            <!--                   <hr>-->
-                            <div class="post-content" itemprop="articleBody">
-                                {{ post.content }}
+                                <!--                   <hr>-->
+                                <div class="post-content"
+                                     itemprop="articleBody">
+                                    {{ post.content }}
+                                </div>
+                            </div>
+                            <div class="col-md-12 post-meta">
+                                <ul class="">
+                                    <li>时间：
+                                        <time datetime="2018-07-19T00:36:00+08:00"
+                                              itemprop="datePublished">{{ post.created_time }}
+                                        </time>
+                                    </li>
+                                    <li itemprop="author" itemscope
+                                        itemtype="http://schema.org/Person">作者：
+                                        <a
+                                                itemprop="name"
+                                                href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/author/1/"
+                                                rel="author">admin</a></li>
+                                    <li>分类： <a
+                                            href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/category/php/">{{ post.category }}</a>
+                                    </li>
+                                    <li itemprop="interactionCount"><a
+                                            itemprop="discussionUrl"
+                                            href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/#comments">4
+                                        条评论</a></li>
+                                    <li class="float-right">
+                                        <a href="{% url 'detail' article_id=post.id %}"
+                                           class="float-right">阅读全文</a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
-                        <div class="col-md-12 post-meta">
-                            <ul class="">
-                                <li>时间：
-                                    <time datetime="2018-07-19T00:36:00+08:00"
-                                          itemprop="datePublished">{{ post.created_time }}
-                                    </time>
-                                </li>
-                                <li itemprop="author" itemscope
-                                    itemtype="http://schema.org/Person">作者： <a
-                                        itemprop="name"
-                                        href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/author/1/"
-                                        rel="author">admin</a></li>
-                                <li>分类： <a
-                                        href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/category/php/">{{ post.category }}</a>
-                                </li>
-                                <li itemprop="interactionCount"><a
-                                        itemprop="discussionUrl"
-                                        href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/archives/42/#comments">4
-                                    条评论</a></li>
-                                <li class="float-right">
-                                    <a href="{% url 'detail' article_id=post.id %}"
-                                       class="float-right">阅读全文</a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
 
 
-                </article>
+                    </article>
                 {% endfor %}
 
 
                 <nav aria-label="Page navigation ">
-                    <ul class="pagination">
-                        <li class="active"><a
-                                href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/page/1/">1</a>
-                        </li>
-                        <li>
-                            <a href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/page/2/">2</a>
-                        </li>
-                        <li>
-                            <a href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/page/3/">3</a>
-                        </li>
-                        <li class="next"><a
-                                href="http://theme.typecho.ptbird.cn/bootstrap-blog/index.php/page/2/">»</a>
-                        </li>
+                    <ul class="pagination">{% comment %}{% endcomment %}
+                        {% if posts.has_previous %}
+
+
+                            <li>
+                                <a href="{% url 'page' page=posts.previous_page_number %}">«上一页</a>
+                            </li>
+                        {% endif %}
+
+                        {% for p in pages %}
+
+
+
+                            {% if p == cur_page %}
+                                <li class="active"><a
+                                        href="{% url 'page' page=p %} ">{{ p }}</a>
+                                </li>
+                            {% else %}
+
+                                <li><a
+                                        href="{% url 'page' page=p %} ">{{ p }}</a>
+                                </li>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% if posts.has_next %}
+
+
+
+                            <li class="next"><a
+                                    href="{% url 'page' page=posts.next_page_number %}">下一页»</a>
+                            </li>
+
+                        {% endif %}
+
                     </ul>
                 </nav>
 
